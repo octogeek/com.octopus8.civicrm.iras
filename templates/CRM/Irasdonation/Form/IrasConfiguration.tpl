@@ -17,8 +17,8 @@
 {* FIELD EXAMPLE: OPTION 2 (MANUAL LAYOUT)
 
   <div>
-    <span>{$form.favorite_color.label}</span>
-    <span>{$form.favorite_color.html}</span>
+    <span>{$form.value.label}</span>
+    <span>{$form.value.html}</span>
   </div>
 
 {* FOOTER *}
