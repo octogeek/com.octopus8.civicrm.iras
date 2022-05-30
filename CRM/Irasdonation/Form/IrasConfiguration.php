@@ -43,41 +43,30 @@ class CRM_Irasdonation_Form_IrasConfiguration extends CRM_Core_Form
     $result = CRM_Core_DAO::executeQuery($sql, CRM_Core_DAO::$_nullArray);
 
     $csvData = [];
+    $dataBody = [];
     while ($result->fetch()) {
       $dataHead = [0, 7, date("Y"), 7, 0, $result->description, null, null, null, null, null, null, null, null];
       array_push($csvData, $dataHead);
     }
 
     $inList = '1=1';
-    if ($reportDate == null) $inList = "contrib.id NOT IN (SELECT ci.contribution_id FROM civicrm_iras_donation ci WHERE ci.created_date IS NOT NULL)";
-    else $inList = "contrib.id IN (SELECT ci.contribution_id FROM civicrm_iras_donation ci WHERE ci.created_date = '$reportDate' AND ci.created_date IS NOT NULL)";
+    if ($reportDate == null) $inList = "trxn.id NOT IN (SELECT ci.financial_trxn_id FROM civicrm_iras_donation ci WHERE ci.created_date IS NOT NULL)";
+    else $inList = "trxn.id IN (SELECT ci.financial_trxn_id FROM civicrm_iras_donation ci WHERE ci.created_date = '$reportDate' AND ci.created_date IS NOT NULL)";
 
     $sql = "SELECT 
-    contrib.id, 
+    trxn.id, 
     cont.sort_name, 
     cont.external_identifier,
-    contrib.total_amount,
+    trxn.total_amount,
     contrib.trxn_id,
-    contrib.receive_date
-    FROM civicrm_contribution contrib 
+    trxn.trxn_date
+    FROM civicrm_financial_trxn trxn 
+    INNER JOIN civicrm_contribution contrib ON contrib.trxn_id = trxn.trxn_id  
     INNER JOIN civicrm_contact cont ON cont.id = contrib.contact_id 
     WHERE $inList
-    AND contrib.contribution_status_id=1 
+    AND trxn.status_id=1 
     AND cont.external_identifier IS NOT NULL 
     LIMIT 5000";
-
-    // $sql = "SELECT 
-    // contrib.id, 
-    // cont.sort_name, 
-    // cont.external_identifier,
-    // contrib.total_amount,
-    // contrib.trxn_id,
-    // contrib.receive_date
-    // FROM civicrm_contribution contrib 
-    // INNER JOIN civicrm_contact cont ON cont.id = contrib.contact_id 
-    // WHERE $inList
-    // AND contrib.contribution_status_id=1 
-    // LIMIT 10";
 
     $result = CRM_Core_DAO::executeQuery($sql, CRM_Core_DAO::$_nullArray);
     $insert = '';
@@ -102,7 +91,8 @@ class CRM_Irasdonation_Form_IrasConfiguration extends CRM_Core_Form
     $dataBottom = [2, $incer, $total, null, null, null, null, null, null, null, null, null, null, null];
     array_push($csvData, $dataBottom);
 
-    $this->generateCsv($csvData);
+    if(count($dataBody)>0) $this->generateCsv($csvData);
+    else CRM_Core_Session::setStatus('No any data to generate report', ts('All reporta are generated'), 'success', array('expires' => 5000));
 
     parent::postProcess();
   }

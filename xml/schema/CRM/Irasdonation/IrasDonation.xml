@@ -8,14 +8,14 @@
   <log>true</log>
 
   <field>
-    <name>contribution_id</name>
+    <name>financial_trxn_id</name>
     <type>int unsigned</type>
     <unique>TRUE</unique>
     <comment>FK to Contact</comment>
   </field>
   <foreignKey>
-    <name>contribution_id</name>
-    <table>civicrm_contribution</table>
+    <name>financial_trxn_id</name>
+    <table>civicrm_financial_trxn</table>
     <key>id</key>
     <onDelete>CASCADE</onDelete>
   </foreignKey>

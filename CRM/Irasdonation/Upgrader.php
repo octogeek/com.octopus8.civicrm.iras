@@ -111,8 +111,8 @@ class CRM_Irasdonation_Upgrader extends CRM_Irasdonation_Upgrader_Base {
   // public function upgrade_4203(): bool {
   //   $this->ctx->log->info('Planning update 4203'); // PEAR Log interface
 
-  //   $minId = CRM_Core_DAO::singleValueQuery('SELECT coalesce(min(id),0) FROM civicrm_contribution');
-  //   $maxId = CRM_Core_DAO::singleValueQuery('SELECT coalesce(max(id),0) FROM civicrm_contribution');
+  //   $minId = CRM_Core_DAO::singleValueQuery('SELECT coalesce(min(id),0) FROM civicrm_financial_trxn');
+  //   $maxId = CRM_Core_DAO::singleValueQuery('SELECT coalesce(max(id),0) FROM civicrm_financial_trxn');
   //   for ($startId = $minId; $startId <= $maxId; $startId += self::BATCH_SIZE) {
   //     $endId = $startId + self::BATCH_SIZE - 1;
   //     $title = E::ts('Upgrade Batch (%1 => %2)', array(
@@ -120,7 +120,7 @@ class CRM_Irasdonation_Upgrader extends CRM_Irasdonation_Upgrader_Base {
   //       2 => $endId,
   //     ));
   //     $sql = '
-  //       UPDATE civicrm_contribution SET foobar = whiz(wonky()+wanker)
+  //       UPDATE civicrm_financial_trxn SET foobar = whiz(wonky()+wanker)
   //       WHERE id BETWEEN %1 and %2
   //     ';
   //     $params = array(

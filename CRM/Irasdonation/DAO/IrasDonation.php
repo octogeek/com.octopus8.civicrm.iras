@@ -45,7 +45,7 @@ class CRM_Irasdonation_DAO_IrasDonation extends CRM_Core_DAO {
          *   (SQL type: int unsigned)
          *   Note that values will be retrieved from the database as a string.
          */
-        public $contribution_id;
+        public $financial_trxn_id;
 
         /**
          * Created date
@@ -83,7 +83,7 @@ class CRM_Irasdonation_DAO_IrasDonation extends CRM_Core_DAO {
         public static function getReferenceColumns() {
           if (!isset(Civi::$statics[__CLASS__]['links'])) {
             Civi::$statics[__CLASS__]['links'] = static::createReferenceColumns(__CLASS__);
-            Civi::$statics[__CLASS__]['links'][] = new CRM_Core_Reference_Basic(self::getTableName(), 'contribution_id', 'civicrm_contribution', 'id');
+            Civi::$statics[__CLASS__]['links'][] = new CRM_Core_Reference_Basic(self::getTableName(), 'financial_trxn_id', 'civicrm_financial_trxn', 'id');
             CRM_Core_DAO_AllCoreTables::invoke(__CLASS__, 'links_callback', Civi::$statics[__CLASS__]['links']);
           }
           return Civi::$statics[__CLASS__]['links'];
@@ -97,11 +97,11 @@ class CRM_Irasdonation_DAO_IrasDonation extends CRM_Core_DAO {
         public static function &fields() {
           if (!isset(Civi::$statics[__CLASS__]['fields'])) {
             Civi::$statics[__CLASS__]['fields'] = [
-              'contribution_id' => [
-                'name' => 'contribution_id',
+              'financial_trxn_id' => [
+                'name' => 'financial_trxn_id',
                 'type' => CRM_Utils_Type::T_INT,
                 'description' => E::ts('FK to Contact'),
-                'where' => 'civicrm_iras_donation.contribution_id',
+                'where' => 'civicrm_iras_donation.financial_trxn_id',
                 'table_name' => 'civicrm_iras_donation',
                 'entity' => 'IrasDonation',
                 'bao' => 'CRM_Irasdonation_DAO_IrasDonation',
