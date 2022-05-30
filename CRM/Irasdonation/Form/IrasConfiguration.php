@@ -141,7 +141,7 @@ class CRM_Irasdonation_Form_IrasConfiguration extends CRM_Core_Form
     }
     fseek($f, 0);
     header('Content-Type: application/csv');
-    header('Content-Disposition: attachment; filename="report.csv";');
+    header('Content-Disposition: attachment; filename="report_'.date('dmY_His').'.csv";');
     fpassthru($f);
     exit();
   }
