@@ -10,6 +10,7 @@
   <field>
     <name>contribution_id</name>
     <type>int unsigned</type>
+    <unique>TRUE</unique>
     <comment>FK to Contact</comment>
   </field>
   <foreignKey>
@@ -19,7 +20,7 @@
     <onDelete>CASCADE</onDelete>
   </foreignKey>
   <field>
-    <name>create_date</name>
+    <name>created_date</name>
     <type>datetime</type>
     <comment>Created date</comment>
   </field>

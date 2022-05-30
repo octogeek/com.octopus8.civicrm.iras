@@ -1,44 +1,25 @@
-# irasdonation
+# IRAS Donation extension ```v1.0```
+---
+CiviCRM extension for IRAS donation program
 
-![Screenshot](/images/screenshot.png)
+---
+![alt text](/assets/install.png)
 
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
+## Nav menu
+---
+Extension will appear in ```Administer->CiviReport```
 
-The extension is licensed under [AGPL-3.0](LICENSE.txt).
+![alt text](/assets/navigation.png)
 
-## Requirements
+## Generate new report
+---
+To generate new report just press ``Generate report``` button
 
-* PHP v7.2+
-* CiviCRM (*FIXME: Version number*)
+![alt text](/assets/without_select.png)
 
-## Installation (Web UI)
+## Old report
+---
+If you want to regenrate already generated report, select report generated date and click ``Generate report``` button,
+you can get report one more time.
 
-Learn more about installing CiviCRM extensions in the [CiviCRM Sysadmin Guide](https://docs.civicrm.org/sysadmin/en/latest/customize/extensions/).
-
-## Installation (CLI, Zip)
-
-Sysadmins and developers may download the `.zip` file for this extension and
-install it with the command-line tool [cv](https://github.com/civicrm/cv).
-
-```bash
-cd <extension-dir>
-cv dl irasdonation@https://github.com/FIXME/irasdonation/archive/master.zip
-```
-
-## Installation (CLI, Git)
-
-Sysadmins and developers may clone the [Git](https://en.wikipedia.org/wiki/Git) repo for this extension and
-install it with the command-line tool [cv](https://github.com/civicrm/cv).
-
-```bash
-git clone https://github.com/FIXME/irasdonation.git
-cv en irasdonation
-```
-
-## Getting Started
-
-(* FIXME: Where would a new user navigate to get started? What changes would they see? *)
-
-## Known Issues
-
-(* FIXME *)
+![alt text](/assets/old_report.png)

@@ -35,7 +35,7 @@ SET FOREIGN_KEY_CHECKS=1;
 -- *******************************************************/
 CREATE TABLE `civicrm_iras_donation` (
   `contribution_id` int unsigned COMMENT 'FK to Contact',
-  `create_date` datetime COMMENT 'Created date',
+  `created_date` datetime COMMENT 'Created date',
   CONSTRAINT FK_civicrm_iras_donation_contribution_id FOREIGN KEY (`contribution_id`) REFERENCES `civicrm_contribution`(`id`) ON DELETE CASCADE
 )
 ENGINE=InnoDB;
